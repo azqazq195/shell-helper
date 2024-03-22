@@ -1,6 +1,6 @@
 [package]
-name = "shell-helper"
-version = "0.1.0"
+name = "smp"
+version = "0.0.1"
 edition = "2021"
 description = "A simple to use, efficient, and full-featured Shell function"
 #repository = "https://github.com/sunjay/brain"
