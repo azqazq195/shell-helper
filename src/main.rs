@@ -1,4 +1,7 @@
+// TODO 지우기
+#![allow(warnings)]
 mod command;
+mod console_utils;
 
 use clap::{Parser, Subcommand};
 use crate::command::copy_command::copy::CopyArgs;
@@ -8,6 +11,8 @@ use crate::command::size_command::size::SizeArgs;
 use crate::command::copy_command::copy;
 use crate::command::read_command::read;
 use crate::command::size_command::size;
+use crate::console_utils::console_utils::message_level;
+use crate::console_utils::MessageLevel;
 
 
 #[derive(Parser)]
@@ -33,16 +38,23 @@ enum Commands {
 
 
 fn main() {
-    let cli = Cli::parse();
+    // message("안녕");
+    // message_color("안녕", ConsoleColor::Magenta);
+    message_level("안녕", MessageLevel::Success);
+    message_level("안녕", MessageLevel::Error);
+    message_level("안녕", MessageLevel::Warning);
+    message_level("hello", MessageLevel::Warning);
 
-    let result = match &cli.command {
-        Commands::Read(args) => read::execute(args),
-        Commands::Copy(args) => copy::execute(args),
-        Commands::Size(args) => size::execute(args),
-    };
-
-    if let Err(e) = result {
-        eprintln!("Error: {}", e);
-        std::process::exit(1);
-    }
+    // let cli = Cli::parse();
+    //
+    // let result = match &cli.command {
+    //     Commands::Read(args) => read::execute(args),
+    //     Commands::Copy(args) => copy::execute(args),
+    //     Commands::Size(args) => size::execute(args),
+    // };
+    //
+    // if let Err(e) = result {
+    //     eprintln!("Error: {}", e);
+    //     std::process::exit(1);
+    // }
 }
