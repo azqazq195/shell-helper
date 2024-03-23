@@ -21,13 +21,18 @@ struct Cli {
 #[derive(Subcommand)]
 enum Commands {
     /// Adds files to myapp
+    #[command(aliases = &["r"], about = "Read files")]
     Read(ReadArgs),
+
+    #[command(aliases = &["cp"], about = "Copy files, directories")]
     Copy(CopyArgs),
-    Size(SizeArgs)
+
+    #[command(aliases = &["s"], about = "Get size of files, directories")]
+    Size(SizeArgs),
 }
 
 
-fn main()  {
+fn main() {
     let cli = Cli::parse();
 
     let result = match &cli.command {
